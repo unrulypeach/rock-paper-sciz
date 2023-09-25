@@ -10,7 +10,7 @@ let tiePhrase = "no winners here";
 
 //randomly return rock, pape, or siz
 function computerPlay() {
-    let computerChoices = ["rock", "paper", "scissors"];
+    let computerChoices = ["rock", "paper", "sciz"];
     let tempChoice = Math.floor(Math.random()*3);
 
     return(computerChoices[tempChoice]);        
@@ -23,15 +23,12 @@ function playerPlay() {
 //plays a singly round of rps,  two parameters - the playerSelection and computerSelection
 // returns a string declaring winter make your function’s playerSelection parameter case-insensitive 
 function playRound(playerSelection, computerSelection) {
-
-
-
     if (playerSelection == computerSelection) {
         results.textContent = "tie";
         resultsContainer.appendChild(results);
 
     } else if (playerSelection == "rock") {
-        if (computerSelection == "scissors") {
+        if (computerSelection == "sciz") {
             score += 1;
             results.textContent = winningPhrase;
             resultsContainer.appendChild(results);
@@ -52,7 +49,7 @@ function playRound(playerSelection, computerSelection) {
             resultsContainer.appendChild(results);
         }
 
-    } else if (playerSelection == "scissors") {
+    } else if (playerSelection == "sciz") {
         if (computerSelection == "paper") {
             score += 1;
             results.textContent = winningPhrase;
@@ -71,8 +68,6 @@ function playRound(playerSelection, computerSelection) {
 //Use the previous function inside of this one to 
 //play a 5 round game that keeps score and reports a winner/loser at end 
 function game() {
-
-
     if (score == 5) {
         results.textContent = 'u win, click to play again';
         resultsContainer.appendChild(results);
@@ -108,9 +103,11 @@ rock.addEventListener('click', () => {
 
 pape.addEventListener('click', () => {
     playRound('paper', computerPlay());
+    game()
 })
 
 sciz.addEventListener('click', () => {
     playRound('sciz', computerPlay());
+    game()
 })
 
